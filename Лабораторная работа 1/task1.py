@@ -43,7 +43,9 @@ class Chair:
 
     def use(self):
         """
-        Метод позволяет взаимодействовать с объектом
+        Метод помечает объект как использующийся в данный момент,
+        предотвращая его от дальнейшего взаимодействия с другими пользователями
+
         >>> chair = Chair((1, 1), "plastic", "white")
         >>> chair.use()
         """
@@ -99,7 +101,7 @@ class User:
 
 
 class Vector2D:
-    def __init__(self, x, y):
+    def __init__(self, x: Union[int, float], y: Union[int, float]):
         if not isinstance(x, (int, float)) or not isinstance(y, (int, float)):
             raise TypeError("Координаты должны быть числами")
 
@@ -117,12 +119,12 @@ class Vector2D:
 
         return (self.x ** 2 + self.y ** 2) ** 0.5
 
-    def multiply_scalar(self, other_vector) -> Union[int, float]:
+    def dot(self, other_vector) -> Union[int, float]:
         """
         Метод возвращает скалярное произведение двух векторов
 
         >>> vector = Vector2D(1, 1)
-        >>> vector.multiply_scalar(Vector2D(2, 2))
+        >>> vector.dot(Vector2D(2, 2))
         4
 
         :param other_vector: вектор, на который производится умножение
